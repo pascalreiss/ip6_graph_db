@@ -1,0 +1,15 @@
+MATCH (n)
+DELETE n
+
+CREATE (S1_dv:DoubleVertex {id:'S1_dv'})
+CREATE (S1:Schaltelement {id:'S1'})
+CREATE (S2_dv:DoubleVertex {id:'S2_dv'})
+CREATE (S2:Schaltelement {id:'S2'})
+
+CREATE
+(S1_dv)-[:DOUBLE_VERTEX]->(S1),
+(S2_dv)-[:DOUBLE_VERTEX]->(S2),
+
+(S1)-[:LEADS_TO {distance:20}]->(S2_dv),
+(S1)-[:LEADS_TO {distance:15}]->(S2_dv),
+(S2)-[:LEADS_TO {distance:40}]->(S1_dv)
