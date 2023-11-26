@@ -1,15 +1,15 @@
 MATCH (n)
-DELETE n
+DETACH DELETE n;
 
-CREATE (S1_dv:DoubleVertex {id:'S1_dv'})
-CREATE (S1:Schaltelement {id:'S1'})
-CREATE (S2_dv:DoubleVertex {id:'S2_dv'})
-CREATE (S2:Schaltelement {id:'S2'})
+CREATE 
+(S1_1:EinfachWeiche {id:'S1_1'}),
+(S1:EinfachWeiche {id:'S1'}),
+(S2_1:EinfachWeiche {id:'S2_1'}),
+(S2:EinfachWeiche {id:'S2'}),
 
-CREATE
-(S1_dv)-[:DOUBLE_VERTEX]->(S1),
-(S2_dv)-[:DOUBLE_VERTEX]->(S2),
+(S1_1)-[:DOUBLE_VERTEX]->(S1),
+(S2_1)-[:DOUBLE_VERTEX]->(S2),
 
-(S1)-[:LEADS_TO {distance:20}]->(S2_dv),
-(S1)-[:LEADS_TO {distance:15}]->(S2_dv),
-(S2)-[:LEADS_TO {distance:40}]->(S1_dv)
+(S1)-[:LEADS_TO {distance:20}]->(S2_1),
+(S1)-[:LEADS_TO {distance:15}]->(S2_1),
+(S2)-[:LEADS_TO {distance:40}]->(S1_1)
