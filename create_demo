@@ -11,8 +11,11 @@ CREATE
 (W3_1:EinfachWeiche {id:'ew03_1'}),
 (W3_2:EinfachWeiche {id:'ew03_2'}),
 
-(W4A_1:EinfachWeiche {id:'dkw4a'}),
-(W4B_2:EinfachWeiche {id:'dkw4b'}),
+(W4A_1:DoppelKanntenWeiche {id:'dkw4a_1'}),
+(W4A_2:DoppelKanntenWeiche {id:'dkw4a_2'}),
+
+(W4B_1:DoppelKanntenWeiche {id:'dkw4b_1'}),
+(W4B_2:DoppelKanntenWeiche {id:'dkw4b_2'}),
 
 (W5_1:EinfachWeiche {id:'ew05_1'}),
 (W5_2:EinfachWeiche {id:'ew05_2'}),
@@ -26,8 +29,11 @@ CREATE
 (W8_1:EinfachWeiche {id:'ew08_1'}),
 (W8_2:EinfachWeiche {id:'ew08_2'}),
 
-(W9_1:EinfachWeiche {id:'dkw9a'}),
-(W9_2:EinfachWeiche {id:'dkw9b'}),
+(W9A_1:DoppelKanntenWeiche {id:'dkw9a_1'}),
+(W9A_2:DoppelKanntenWeiche {id:'dkw9a_2'}),
+
+(W9B_1:DoppelKanntenWeiche {id:'dkw9b_1'}),
+(W9B_2:DoppelKanntenWeiche {id:'dkw9b_2'}),
 
 (W10_1:EinfachWeiche {id:'ew10_1'}),
 (W10_2:EinfachWeiche {id:'ew10_2'}),
