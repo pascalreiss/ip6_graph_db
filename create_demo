@@ -2,14 +2,47 @@ MATCH (n)
 DETACH DELETE n;
 
 CREATE 
-(S1_1:EinfachWeiche {id:'S1_1'}),
-(S1:EinfachWeiche {id:'S1'}),
-(S2_1:EinfachWeiche {id:'S2_1'}),
-(S2:EinfachWeiche {id:'S2'}),
+(W1_1:EinfachWeiche {id:'ew01_1'}),
+(W1_2:EinfachWeiche {id:'ew01_2'}),
 
-(S1_1)-[:DOUBLE_VERTEX]->(S1),
-(S2_1)-[:DOUBLE_VERTEX]->(S2),
+(W2_1:EinfachWeiche {id:'ew02_1'}),
+(W2_2:EinfachWeiche {id:'ew02_2'}),
 
-(S1)-[:LEADS_TO {distance:20}]->(S2_1),
-(S1)-[:LEADS_TO {distance:15}]->(S2_1),
-(S2)-[:LEADS_TO {distance:40}]->(S1_1)
+(W3_1:EinfachWeiche {id:'ew03_1'}),
+(W3_2:EinfachWeiche {id:'ew03_2'}),
+
+(W4A_1:EinfachWeiche {id:'dkw4a'}),
+(W4B_2:EinfachWeiche {id:'dkw4b'}),
+
+(W5_1:EinfachWeiche {id:'ew05_1'}),
+(W5_2:EinfachWeiche {id:'ew05_2'}),
+
+(W6_1:EinfachWeiche {id:'ew06_1'}),
+(W6_2:EinfachWeiche {id:'ew06_2'}),
+
+(W7_1:EinfachWeiche {id:'ew07_1'}),
+(W7_2:EinfachWeiche {id:'ew07_2'}),
+
+(W8_1:EinfachWeiche {id:'ew08_1'}),
+(W8_2:EinfachWeiche {id:'ew08_2'}),
+
+(W9_1:EinfachWeiche {id:'dkw9a'}),
+(W9_2:EinfachWeiche {id:'dkw9b'}),
+
+(W10_1:EinfachWeiche {id:'ew10_1'}),
+(W10_2:EinfachWeiche {id:'ew10_2'}),
+
+(W11_1:EinfachWeiche {id:'ew11_1'}),
+(W11_2:EinfachWeiche {id:'ew12_2'}),
+
+(W12_1:EinfachWeiche {id:'ew12_1'}),
+(W12_2:EinfachWeiche {id:'ew12_2'}),
+
+
+(W1_1)-[:DOUBLE_VERTEX]->(W1_2),
+(W2_1)-[:DOUBLE_VERTEX]->(W2_2),
+
+
+(W1_2)-[:LEADS_TO {distance:20}]->(W2_1),
+(W1_2)-[:LEADS_TO {distance:15}]->(W2_1),
+(W2_2)-[:LEADS_TO {distance:40}]->(W1_1)
