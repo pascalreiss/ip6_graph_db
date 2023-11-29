@@ -1,5 +1,5 @@
 """Neo4j Dachsburg-Ring example."""
-from pathlib import Path
+import json
 from typing import Dict, List, Tuple
 from uuid import uuid4
 
@@ -23,6 +23,8 @@ URI = "bolt://neo4j:7687"
 USR = "neo4j"
 PASSWD = "password"
 
+WEICHEN_FILE = "dachsburgring_weichen.json"
+
 driver = GraphDatabase.driver(URI, auth=(USR, PASSWD))
 session = driver.session()
 session.run(reset_db())
@@ -31,19 +33,22 @@ w_tps: List[Node] = []
 double_nodes: Dict[str, Tuple[Node, Node]] = {"DAB": {}, "ENS": {}, "CHA": {}}
 query: List[str] = []
 
-p = Path("./got_raw_files/")
-for file in p.glob("**/*.dat"):
-    bhf, name, dcc = file.name.split("_")
-    dcc = dcc.split(".")[0][3:]
-    node = Node(
-        id=guid(),
-        ecos_id=dcc,
-        switch_item=SwitchItem.WEICHE,
-        name=name,
-        bhf=Bhf[bhf.upper()],
-        coords=np.zeros((3,)),
-    )
-    w_tps.append(node)
+with open(WEICHEN_FILE, encoding="utf-8") as fd:
+    weichen_config = json.load(fd)
+
+for bhf, weichen in weichen_config.items():
+    for weiche in weichen:
+        dcc = weichen_config[bhf][weiche]["dcc"]
+        coords = weichen_config[bhf][weiche]["coords"]
+        node = Node(
+            id=guid(),
+            ecos_id=dcc,
+            switch_item=SwitchItem.WEICHE,
+            name=weiche,
+            bhf=Bhf[bhf],
+            coords=np.array(coords, dtype=np.float32),
+        )
+        w_tps.append(node)
 
 for w_tp in w_tps:
     cmd, nodes = double_node(w_tp)
