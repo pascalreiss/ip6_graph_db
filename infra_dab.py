@@ -149,6 +149,12 @@ rails_dab = [
         distance=1,
     ),
     Edge(
+        source=double_nodes["DAB"]["ew12"][1],
+        dest=double_nodes["DAB"]["ew13"][0],
+        relation=EdgeRelation.TRAIN_RAIL,
+        distance=1,
+    ),
+    Edge(
         source=double_nodes["DAB"]["ew13"][1],
         dest=double_nodes["DAB"]["ew14"][0],
         relation=EdgeRelation.TRAIN_RAIL,
