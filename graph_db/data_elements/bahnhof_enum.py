@@ -1,10 +1,13 @@
-from enum import StrEnum
+"""Alle Bahnhöfe der Betriebsanlage."""
+from enum import Enum
 
 
-class Bhf(StrEnum):
-    dab = "Dachsburg"
-    ens = "Ensikon"
-    cha = "Charrat"
-    ger = "Gerau"
-    fus = "Fusio"
-    blo = "Bloney"
+class Bhf(Enum):
+    """Enum trainstations."""
+
+    DAB = "Dachsburg"
+    ENS = "Ensikon"
+    CHA = "Charrat"
+    GER = "Gerau"
+    FUS = "Fusio"
+    BLO = "Bloney"
