@@ -8,3 +8,7 @@ RUN pip install --upgrade pip \
 
 # needed for pyvista in notebooks
 RUN apt-get install libgl1-mesa-glx xvfb -y
+
+CMD poetry install \
+    && poetry shell \
+    && pre-commit install
