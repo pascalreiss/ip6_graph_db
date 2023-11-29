@@ -1,0 +1,28 @@
+services:
+  dev-environment-python:
+    build: .
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    volumes:
+      - ../:/workdir/
+    networks:
+      - ebl  
+      
+  neo4j:
+    image: neo4j:5.12.0-community
+    restart: unless-stopped
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+      - "7473:7473"
+    environment:
+      - NEO4J_AUTH=neo4j/password
+    volumes:
+      - ./db/data:/data
+      - ./db/conf:/conf
+      - ./db/logs:/logs
+    networks:
+      - ebl
+
+networks:
+  ebl:
