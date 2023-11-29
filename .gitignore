@@ -169,3 +169,4 @@ dump
 # graph db
 /neo4j_env/
 db
+got_raw_files
