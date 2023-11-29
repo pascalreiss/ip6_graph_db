@@ -18,9 +18,9 @@ def generate_create_file(nodes: List[node.Node], edges: List[edge.Edge], name: s
 
     res += "\n"
 
-    # Das verhebt nur in Eindirektional Verkehr, da muss noch was besseres hin
     for edge in edges:
         res += f"({edge.From.id}_2)-[:LEADS_TO {{distance:{edge.Distance}}}]->({edge.To.id}_1),\n"
+        res += f"({edge.To.id}_1)-[:LEADS_TO {{distance:{edge.Distance}}}]->({edge.From.id}_2),\n"
 
     fd = open(name, "x", encoding="utf-8")
     fd.write(res)
