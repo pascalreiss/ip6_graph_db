@@ -1,13 +1,4 @@
 services:
-  dev-environment-python:
-    build: .
-    stdin_open: true # docker run -i
-    tty: true        # docker run -t
-    volumes:
-      - ../:/workdir/
-    networks:
-      - ebl  
-      
   neo4j:
     image: neo4j:5.12.0-community
     restart: unless-stopped
@@ -22,7 +13,9 @@ services:
       - ./db/conf:/conf
       - ./db/logs:/logs
     networks:
-      - ebl
+      - ebl-net
 
 networks:
-  ebl:
+  ebl-net:
+    name: ebl
+    external: true
